@@ -35,7 +35,7 @@ public class ApiScheduler{
 	    try {
 	   		final HashMap<String, Object> param = new HashMap<String, Object>();
 	    	// 로또 번호 테이블에서 마지막 로또 회차 조회
-	    	List<HashMap> list= (List<HashMap>) apiService.selectSqlIdByHashMap("ApiDAO.selectMaxDrwNoLotto", param);
+	    	List<HashMap<String, Object>> list= apiService.selectSqlIdByHashMap("ApiDAO.selectMaxDrwNoLotto", param);
 	    	drwNo = Integer.parseInt(list.get(0).get("drwNo").toString());
 	    	// api 연결
 	    	httpConnection(drwNo);

@@ -23,7 +23,7 @@ public class ApiServiceImpl  implements ApiService{
 	private ApiDAO apiDAO;
 	
 	@Override
-	public List<?> selectSqlIdByHashMap(String sqlId, HashMap<String, Object> param)throws Exception{
+	public List<HashMap<String, Object>> selectSqlIdByHashMap(String sqlId, HashMap<String, Object> param)throws Exception{
 		return apiDAO.selectSqlIdByHashMap(sqlId, param);
 	}
 	

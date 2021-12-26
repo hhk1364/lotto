@@ -15,7 +15,7 @@ public class ApiDAO {
     @Inject
 	private SqlSession sqlSession;    
     
-    public List<?> selectSqlIdByHashMap(String sqlId, HashMap<String, Object> param) throws Exception {
+    public List<HashMap<String, Object>> selectSqlIdByHashMap(String sqlId, HashMap<String, Object> param) throws Exception {
  
         return sqlSession.selectList(sqlId, param);
         
