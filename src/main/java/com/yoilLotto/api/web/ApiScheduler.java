@@ -8,18 +8,11 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.json.JSONObject;
-import org.quartz.JobExecutionContext;
-import org.quartz.JobExecutionException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.quartz.QuartzJobBean;
 import org.springframework.stereotype.Component;
 
 import com.yoilLotto.api.web.ApiService;
-
-import io.reactivex.annotations.SchedulerSupport;
 
 @Component
 public class ApiScheduler{
@@ -33,7 +26,7 @@ public class ApiScheduler{
 		int drwNo = 0;
 		
 	    try {
-	   		final HashMap<String, Object> param = new HashMap<String, Object>();
+	   		HashMap<String, Object> param = new HashMap<String, Object>();
 	    	// 로또 번호 테이블에서 마지막 로또 회차 조회
 	    	List<HashMap<String, Object>> list= apiService.selectSqlIdByHashMap("ApiDAO.selectMaxDrwNoLotto", param);
 	    	drwNo = Integer.parseInt(list.get(0).get("drwNo").toString());
@@ -57,7 +50,7 @@ public class ApiScheduler{
 		    BufferedReader br = null;	 
 		    StringBuilder sb = new StringBuilder();
 		    JSONObject jsonLotto = null;
-		    final HashMap<String, Object> param = new HashMap<String, Object>();
+		    HashMap<String, Object> param = new HashMap<String, Object>();
 	   		String targetUrl = "";
 		    
 		    try {
