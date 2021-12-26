@@ -33,7 +33,7 @@ public class ApiScheduler{
 		int drwNo = 0;
 		
 	    try {
-	   		HashMap<String, Object> param = new HashMap<String, Object>();
+	   		final HashMap<String, Object> param = new HashMap<String, Object>();
 	    	// 로또 번호 테이블에서 마지막 로또 회차 조회
 	    	List<HashMap> list= (List<HashMap>) apiService.selectSqlIdByHashMap("ApiDAO.selectMaxDrwNoLotto", param);
 	    	drwNo = Integer.parseInt(list.get(0).get("drwNo").toString());
@@ -57,7 +57,7 @@ public class ApiScheduler{
 		    BufferedReader br = null;	 
 		    StringBuilder sb = new StringBuilder();
 		    JSONObject jsonLotto = null;
-	   		HashMap<String, Object> param = new HashMap<String, Object>();
+		    final HashMap<String, Object> param = new HashMap<String, Object>();
 	   		String targetUrl = "";
 		    
 		    try {
