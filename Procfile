@@ -1,1 +1,1 @@
-web: java -Dspring.server.port=8080 $JAVA_OPTS -jar target/lotto-1.0.0-BUILD-SNAPSHOT.jar
+web: java -Dserver.port=$PORT $JAVA_OPTS -jar target/lotto-1.0.0-BUILD-SNAPSHOT.jar
