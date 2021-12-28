@@ -1,1 +1,1 @@
-web: gunicorn korea-lotto-recommend.wsgi --log-file
+web: java -Dspring.server.port=8080 -Dspring.profiles.active=production $JAVA_OPTS -jar wedulpos-0.0.1-SNAPSHOT.war
