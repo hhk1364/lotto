@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ApiDAO">
+	<insert id="ApiDAO.insertLotto" parameterType="hashMap">
+		INSERT INTO LOTTO_DATA_M 
+			( 
+				drwNo 		    ,	
+				returnValue     ,	
+				totSellamnt     ,	
+				drwNoDate 	    ,	
+				firstWinamnt    ,	
+				firstPrzwnerCo  ,	
+				firstAccumamnt 	,
+				drwtNo1 		,
+				drwtNo2 		,
+				drwtNo3 		,
+				drwtNo4 		,
+				drwtNo5 		,
+				drwtNo6 		,
+				bnusNo  		
+ 			) 
+		VALUES 
+			( 
+				#{drwNo} 		,
+				#{returnValue} 	,
+				#{totSellamnt} 	,
+				#{drwNoDate} 	,	
+				#{firstWinamnt} ,	
+				#{firstPrzwnerCo} , 	
+				#{firstAccumamnt} ,	
+				#{drwtNo1} 		,
+				#{drwtNo2} 		,
+				#{drwtNo3} 		,
+				#{drwtNo4} 		,
+				#{drwtNo5} 		,
+				#{drwtNo6} 		,
+				#{bnusNo}  		
+			)
+	</insert>
+	
+	<select id="ApiDAO.selectMaxDrwNoLotto" parameterType="hashMap" resultType="hashMap">
+		SELECT
+			MAX(drwNo) + 1 AS drwNo
+		FROM 
+			LOTTO_DATA_M
+	</select>
+	
+</mapper>
