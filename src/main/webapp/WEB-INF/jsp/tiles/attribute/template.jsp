@@ -9,13 +9,16 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="<c:url value="/js/home.js"/>"></script>
+<link rel="stylesheet" href="/css/main.css">
 </head>
 <title>오늘의 로또</title>
 </head>
 <body>
-    <tiles:insertAttribute name="head" />
-    <tiles:insertAttribute name="contents" />
-    <tiles:insertAttribute name="bottom" />
+	<div class="container">
+	    <tiles:insertAttribute name="head" />
+	    <tiles:insertAttribute name="contents" />
+	    <tiles:insertAttribute name="bottom" />
+	</div>
 </body>
 </html>
  

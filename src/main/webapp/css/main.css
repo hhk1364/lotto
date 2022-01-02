@@ -1,0 +1,19 @@
+.container {
+    position: relative;
+    width: 1130px;
+    padding: 20px 30px;
+    margin: 0 auto;
+    letter-spacing: -.2px;
+}
+.menuDiv{
+    position: absolute;
+	top: 20%;
+	left: 5%;
+	color: white;
+	display: inline-block;
+ }
+.menu{
+	display: inline-block;
+	margin-right: 30px;
+	cursor:pointer;
+}

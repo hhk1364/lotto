@@ -8,7 +8,6 @@
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <link rel="stylesheet" href="/kodispub/css/jquery-ui.css" type="text/css" >
 <script src="<c:url value="/js/home.js"/>"></script>
-<title>오늘의 로또</title>
 </head>
 <body>
 	
