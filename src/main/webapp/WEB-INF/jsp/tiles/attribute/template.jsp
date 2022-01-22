@@ -6,10 +6,12 @@
 <!DOCTYPE html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="content-language" content="ko">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script src="<c:url value="/js/home.js"/>"></script>
+<script src="/js/home.js"></script>
 <link rel="stylesheet" href="/css/main.css">
+<link rel="icon" type="image/x-icon" href="/image/favicon.png" />
 </head>
 <title>오늘의 로또</title>
 </head>

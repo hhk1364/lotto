@@ -1,10 +1,13 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <!DOCTYPE html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script src="<c:url value="/js/home.js"/>"></script>
 </head>
 <title>오늘의 로또</title>
 </head>
@@ -17,10 +20,10 @@
   		<img src="../image/menubackground.png" alt="오늘의 로또 메뉴 배경" style="position: relative;width:1130px;height: 65px;margin-bottom: 20px;margin-top: 0px;">
   	</div>
   	<div class="menuDiv">
-	 	<div class="menu">회차별 당첨번호</div>
-	 	<div class="menu">로또 번호 추천기</div>
-	 	<div class="menu">로또 번호 통계</div>
-	 	<div class="menu">당첨 지역 통계</div>
+	 	<div class="menu" id="menu1" onclick="clickMenu(this)">회차별 당첨번호</div>
+	 	<div class="menu" id="menu2" onclick="clickMenu(this)">로또 번호 추천기</div>
+	 	<div class="menu" id="menu3" onclick="clickMenu(this)">로또 번호 통계</div>
+	 	<div class="menu" id="menu4" onclick="clickMenu(this)">당첨 지역 통계</div>
 	</div>
   </div>
 </body>
