@@ -5,7 +5,7 @@
 	<bean id="scheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
 		<property name="triggers">
 			<list>
-				<!-- 매주 토요일 21시 로또 데이터 가져오기-->
+				<!-- 매주 토요일 22시 로또 데이터 가져오기-->
 				<ref bean="cronLottoDataTrigger"/>
 			</list>
 		</property>
@@ -16,7 +16,7 @@
 	<!-- 매주 토요일 22시 로또 데이터 가져오기-->
 	<bean id="cronLottoDataTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
 	   	<property name="jobDetail" ref="lottoDataSyncCronBean" />
-	   	<property name="cronExpression" value="0 0 22 ? * SAT *" />
+	   	<property name="cronExpression" value="0 0 22 ? * 7 *" />
 	   	<!-- <property name="cronExpression" value="0 0/1 * * * ?" /> -->
 	</bean>	
 
