@@ -8,6 +8,9 @@
 </title>
 </head>
 <body>
-   <div id="">
+   <div class="content">
+   	<div>
+   	</div>
+   </div>
 </body>
 </html>

@@ -18,8 +18,8 @@
 	cursor:pointer;
 }
 #footer {
-    background-color: #fafbfc;
-    border-top: 1px solid #e4e8eb;
+    background-color: #FDFFFF;
+    border-top: 1px solid #2E75B6;
 }
 #footer .footer_inner {
     width: 1130px;
@@ -41,4 +41,9 @@
 	margin-left:40px;
 	display: inline-block;	
     vertical-align: middle;
+}
+.content{
+    min-height: 700px;
+    margin: 0 auto;
+    background-color: #fafbfc;           
 }
