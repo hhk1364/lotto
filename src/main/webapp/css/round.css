@@ -1,0 +1,97 @@
+#round-bx{
+	border: 1px solid #e8ebee;
+    border-radius: 6px;
+    -webkit-box-shadow: 0 1px 1px 0 rgb(0 0 0 / 3%);
+    box-shadow: 0 1px 1px 0 rgb(0 0 0 / 3%);
+    background-color: #fff;
+}
+.round_title_area{
+    position: relative;
+    margin-bottom: -1px;
+    padding: 0 20px;
+    border-bottom: 1px solid #eff2f4;
+    line-height: 49px;
+    background: 0 0;
+}
+.round-wrap{
+    margin: 0 20px;
+}
+.round_lotto_wrap{
+	position: relative;
+    z-index: 10;
+    margin-top: 20px;
+    border: 6px solid #f4f4f5;
+    background-color: #fbfbfb;
+}
+.round_lotto_title{
+	overflow: hidden;
+    height: 39px;
+    padding: 0 3px;
+    border-bottom: 1px solid #ededed;
+    background-color: #fff;
+}
+.round_lotto_number{
+	overflow: hidden;
+    height: 54px;
+    padding: 19px 0 0 350px;
+}
+.round_lotto_number .bonus{
+    display: block;
+    float: left;
+    margin-top: 11px;
+    margin-left: 7px;
+    padding-left: 14px;
+    background: url(../image/num_lst.png) no-repeat -227px -182px;
+    color: #808080;
+    letter-spacing: -1px;
+    font-size: 12px;
+}
+
+.round_lotto_number .num{display:block;overflow:hidden;float:left;width:33px;height:33px;margin-left:10px;background:url(../image/num_lst.png) no-repeat -420px -205px;line-height:10rem;text-indent:-1000px}
+.round_lotto_number .num:first-child{margin-left:6px}
+.round_lotto_number .num.ball1{background-position:0 0}
+.round_lotto_number .num.ball2{background-position:-43px 0}
+.round_lotto_number .num.ball3{background-position:-86px 0}
+.round_lotto_number .num.ball4{background-position:-129px 0}
+.round_lotto_number .num.ball5{background-position:-172px 0}
+.round_lotto_number .num.ball6{background-position:-215px 0}
+.round_lotto_number .num.ball7{background-position:-258px 0}
+.round_lotto_number .num.ball8{background-position:-301px 0}
+.round_lotto_number .num.ball9{background-position:-344px 0}
+.round_lotto_number .num.ball10{background-position:-387px 0}
+.round_lotto_number .num.ball11{background-position:0 -43px}
+.round_lotto_number .num.ball12{background-position:-43px -43px}
+.round_lotto_number .num.ball13{background-position:-86px -43px}
+.round_lotto_number .num.ball14{background-position:-129px -43px}
+.round_lotto_number .num.ball15{background-position:-172px -43px}
+.round_lotto_number .num.ball16{background-position:-215px -43px}
+.round_lotto_number .num.ball17{background-position:-258px -43px}
+.round_lotto_number .num.ball18{background-position:-301px -43px}
+.round_lotto_number .num.ball19{background-position:-344px -43px}
+.round_lotto_number .num.ball20{background-position:-387px -43px}
+.round_lotto_number .num.ball21{background-position:0 -86px}
+.round_lotto_number .num.ball22{background-position:-43px -86px}
+.round_lotto_number .num.ball23{background-position:-86px -86px}
+.round_lotto_number .num.ball24{background-position:-129px -86px}
+.round_lotto_number .num.ball25{background-position:-172px -86px}
+.round_lotto_number .num.ball26{background-position:-215px -86px}
+.round_lotto_number .num.ball27{background-position:-258px -86px}
+.round_lotto_number .num.ball28{background-position:-301px -86px}
+.round_lotto_number .num.ball29{background-position:-344px -86px}
+.round_lotto_number .num.ball30{background-position:-387px -86px}
+.round_lotto_number .num.ball31{background-position:0 -129px}
+.round_lotto_number .num.ball32{background-position:-43px -129px}
+.round_lotto_number .num.ball33{background-position:-86px -129px}
+.round_lotto_number .num.ball34{background-position:-129px -129px}
+.round_lotto_number .num.ball35{background-position:-172px -129px}
+.round_lotto_number .num.ball36{background-position:-215px -129px}
+.round_lotto_number .num.ball37{background-position:-258px -129px}
+.round_lotto_number .num.ball38{background-position:-301px -129px}
+.round_lotto_number .num.ball39{background-position:-344px -129px}
+.round_lotto_number .num.ball40{background-position:-387px -129px}
+.round_lotto_number .num.ball41{background-position:0 -172px}
+.round_lotto_number .num.ball42{background-position:-43px -172px}
+.round_lotto_number .num.ball43{background-position:-86px -172px}
+.round_lotto_number .num.ball44{background-position:-129px -172px}
+.round_lotto_number .num.ball45{background-position:-172px -172px}
+.round_lotto_number .bonus + .num{margin-left:6px}

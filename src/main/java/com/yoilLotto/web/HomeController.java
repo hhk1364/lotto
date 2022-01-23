@@ -1,10 +1,15 @@
 package com.yoilLotto.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import com.yoilLotto.stats.web.StatsService;
+import com.yoilLotto.round.RoundService;
+
+import java.util.HashMap;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -15,15 +20,25 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class HomeController {
 		 
-	@Resource(name = "StatsService")
-	private StatsService statsService;
+	@Autowired
+	private RoundService roundService;
 	
 	@RequestMapping(value = "/home.do")
 	public String goMainPage(HttpServletRequest request,
-								 ModelMap model)throws Exception{
+							 @RequestParam(value = "drwNo", required = false) String drwNo,
+							 ModelMap model)throws Exception{
 	
+		HashMap<String, Object> param = new HashMap<String, Object>();
 		
-		//for(int drwNo = 957;drwNo<983;drwNo++) { httpConnection(drwNo); }
+		try {
+			
+			List<HashMap<String, Object>> result = roundService.selectSqlIdByHashMap("RoundDAO.selectDrwNoLotto", param);
+			
+			model.addAttribute("result", result);
+			
+		}catch (Exception e) {
+	        e.printStackTrace();
+	    }
 		 
 		return "home";
 	}

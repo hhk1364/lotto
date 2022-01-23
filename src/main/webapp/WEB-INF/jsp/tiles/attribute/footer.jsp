@@ -21,6 +21,9 @@
 					<p style="display: inline-block; margin-left: 20px;">
 						👩‍💻  Developed by hhk1364
 					</p>
+					<p style="display: inline-block; margin-left: 20px;">
+						🎨 디자인 및 css는 네이버(NAVER)를 참고하였습니다.
+					</p>
 				</div>
 			</div>
 		</div>
