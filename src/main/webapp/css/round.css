@@ -5,6 +5,9 @@
     box-shadow: 0 1px 1px 0 rgb(0 0 0 / 3%);
     background-color: #fff;
 }
+.round_title{
+	display:inline-block;
+}
 .round_title_area{
     position: relative;
     margin-bottom: -1px;
@@ -95,3 +98,48 @@
 .round_lotto_number .num.ball44{background-position:-129px -172px}
 .round_lotto_number .num.ball45{background-position:-172px -172px}
 .round_lotto_number .bonus + .num{margin-left:6px}
+
+
+
+
+
+
+.round_title_selectBox {
+  position: relative;
+  display:inline-block;
+  margin-left: 10px;
+  border-radius: 4px;
+  border: 2px solid #f4f4f5;
+}
+.round_title_select {
+  appearance:none;
+  width: inherit;
+  height: 45px;
+  background: transparent;
+  border: 0 none;
+  outline: 0 none;
+  z-index: 3; 
+  margin-left: 10px;
+  margin-right: 10px;  
+}
+.round_title_select option {
+  padding: 3px 0;
+  font-size: 14px;
+}
+.icoArrow {
+  position: absolute; 
+  top:15px;
+  right: 0; 
+  z-index: 1; 
+  width: 35px; 
+  height: inherit;
+  border-left: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icoArrow img {
+  width: 50%;
+  transition: .3s; 
+}

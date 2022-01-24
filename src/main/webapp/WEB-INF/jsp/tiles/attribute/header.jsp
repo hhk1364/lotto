@@ -13,6 +13,7 @@
 </head>
 <body>
   <div style="text-align:center">
+	<img src="../image/favicon.png" alt="로고이미지" style="width: 100px;padding-bottom: 10px;">
   	<img src="../image/logo.png" alt="오늘의 로또 로고" style="width: 300px;">
   </div>
   <div style="position: relative;">
@@ -20,10 +21,10 @@
   		<img src="../image/menubackground.png" alt="오늘의 로또 메뉴 배경" style="position: relative;width:1130px;height: 65px;margin-bottom: 20px;margin-top: 0px;">
   	</div>
   	<div class="menuDiv">
-	 	<div class="menu" id="menu1" onclick="clickMenu(this)">회차별 당첨번호</div>
-	 	<div class="menu" id="menu2" onclick="clickMenu(this)">로또 번호 추천기</div>
+	 	<div class="menu" id="menu1" onclick="clickMenu(this)">로또 당첨번호 정보</div>
+	 	<!-- <div class="menu" id="menu2" onclick="clickMenu(this)">로또 번호 추천기</div>
 	 	<div class="menu" id="menu3" onclick="clickMenu(this)">로또 번호 통계</div>
-	 	<div class="menu" id="menu4" onclick="clickMenu(this)">당첨 지역 통계</div>
+	 	<div class="menu" id="menu4" onclick="clickMenu(this)">당첨 지역 통계</div> -->
 	</div>
   </div>
 </body>
