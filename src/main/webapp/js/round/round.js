@@ -1,7 +1,3 @@
-
-/*if($('#round_title_select')){
-		transform: rotate(180deg);
-	}else{
-		
-	}
-});*/
+function title_select_change(opt){
+	opt.options[opt.selectedIndex].value
+}

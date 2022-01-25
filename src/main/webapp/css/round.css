@@ -102,7 +102,7 @@
 
 
 
-
+select::-ms-expand { display:none; } 
 
 .round_title_selectBox {
   position: relative;
@@ -113,30 +113,19 @@
 }
 .round_title_select {
   appearance:none;
-  width: inherit;
+  width: 150px;
   height: 45px;
-  background: transparent;
+  background: url(../image/arrow.png) no-repeat 99% 46%;
+  background-size: 19px;
   border: 0 none;
   outline: 0 none;
-  z-index: 3; 
+  z-index: 100; 
   margin-left: 10px;
   margin-right: 10px;  
 }
 .round_title_select option {
   padding: 3px 0;
   font-size: 14px;
-}
-.icoArrow {
-  position: absolute; 
-  top:15px;
-  right: 0; 
-  z-index: 1; 
-  width: 35px; 
-  height: inherit;
-  border-left: 2px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .icoArrow img {

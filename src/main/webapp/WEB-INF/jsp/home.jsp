@@ -11,7 +11,7 @@
    		<div class="round_title_area"> 
    			<h2 class="round_title">로또 당첨번호 정보</h2>
    			<div class="round_title_selectBox">
-			  <select class="round_title_select" id="round_title_select">
+			  <select class="round_title_select" id="round_title_select" onchange="title_select_change(this)">
 			    <option selected>회차</option>
 			    <option value="melon">날짜</option>
 			    <option value="apple">누적 상금</option>
@@ -19,7 +19,6 @@
 			    <option value="grape">1등 당첨 인원</option>
 			    <option value="melon">1등 당첨금 총액</option>
 			  </select>
-			  <span class="icoArrow"><img src="/image/arrow.png" alt="선택하세요"></span>
 			</div>
    		</div>
    		<div class="round-wrap">
