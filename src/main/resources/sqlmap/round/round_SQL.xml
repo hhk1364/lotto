@@ -5,7 +5,19 @@
 <mapper namespace="RoundDAO">
 	<select id="RoundDAO.selectDrwNoLotto" parameterType="hashMap" resultType="hashMap">
 		SELECT
-			*
+			drwNo,
+			drwNoDate,
+			drwtNo1,
+			drwtNo2,
+			drwtNo3,
+			drwtNo4,
+			drwtNo5,
+			drwtNo6,
+			bnusNo,
+			CAST(firstWinamnt as signed integer) as firstWinamnt,
+			CAST(firstPrzwnerCo as signed integer) as firstPrzwnerCo,
+			CAST(firstAccumamnt as signed integer) as firstAccumamnt,
+			CAST(totSellamnt as signed integer) as totSellamnt
 		FROM 
 			LOTTO_DATA_M
 		<where>
