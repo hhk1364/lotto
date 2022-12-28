@@ -1,9 +1,3 @@
-// 로또 당첨번호 정보 검색
-function searchTitleChange(opt){
-	var val = opt.options[opt.selectedIndex].value;
-	
-}
-
 // 상세내용보기
 function showDetail(){
 	

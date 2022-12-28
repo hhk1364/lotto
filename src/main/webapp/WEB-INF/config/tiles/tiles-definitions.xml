@@ -3,15 +3,27 @@
  
 <tiles-definitions>
 	<!-- main template -->
-	<definition name="mainTpl" 	template="/WEB-INF/jsp/tiles/attribute/template.jsp">
+	<definition name="mainTpl" 	template="/WEB-INF/jsp/tiles/attribute/mainTemplate.jsp">
 		<put-attribute name="title"         value="오늘의 로또(로또추천 및 통계 서비스)"  />
         <put-attribute name="head"          value="/WEB-INF/jsp/tiles/attribute/header.jsp" />
-        <put-attribute name="contents"      value="/WEB-INF/jsp/tiles/attribute/{1}/{2}.jsp" />
         <put-attribute name="bottom"        value="/WEB-INF/jsp/tiles/attribute/footer.jsp" />
 	</definition>
 	
 	<definition name="home" extends="mainTpl">
 		 <put-attribute name="contents"      value="/WEB-INF/jsp/home.jsp" />
     </definition>
+    
+	<!-- sub template -->
+	<definition name="subTpl" 	template="/WEB-INF/jsp/tiles/attribute/subTemplate.jsp">
+		<put-attribute name="title"         value="오늘의 로또(로또추천 및 통계 서비스)"  />
+		<put-attribute name="head"          value="/WEB-INF/jsp/tiles/attribute/header.jsp" />
+        <put-attribute name="side"      	 value="/WEB-INF/jsp/tiles/attribute/subMenuSide.jsp" />
+		<put-attribute name="bottom"        value="/WEB-INF/jsp/tiles/attribute/footer.jsp" />
+	</definition>
+	
+	<definition name="/*/*" extends="subTpl">
+    	<put-attribute name="contents"      value="/WEB-INF/jsp/{1}/{2}.jsp" />
+    </definition>
+	
 	
 </tiles-definitions>

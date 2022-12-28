@@ -14,7 +14,7 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**"/>
-			<bean id="loggerInterceptor" class="com.yoilLotto.com.logger.LoggerInterceptor"></bean>
+				<bean id="comInterceptor" class="com.yoilLotto.com.interceptor.ComInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
 	

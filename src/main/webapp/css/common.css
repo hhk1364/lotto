@@ -1,0 +1,120 @@
+.logo{
+	width : -webkit-calc(-webkit-calc(100% - 1130px) / 2); /* for Chrome, Safari */
+    width :    -moz-calc(-moz-calc(100% - 1130px) / 2); /* for Firefox */
+    width :         calc(calc(100% - 1130px) / 2); /* for IE */	
+	display: inline-block;    
+	text-align: center;
+	cursor:pointer;
+}
+.menuDiv{
+	width: 1130px;
+    padding-left:30px;
+	position:absolute;
+	color: #5B5AFF;
+	display: inline-block;
+	font-weight : bolder;
+	top : 22px;
+	border-left: 2px solid #ededed;
+	cursor:pointer;
+	font-size: larger;
+}
+.menu{
+	display: inline-block;
+	text-align:center;
+	margin-right:15px;
+	margin-left: 25px;
+	cursor:pointer;
+}
+.mainContainer {
+    position: relative;
+    width: 1130px;
+    padding: 20px 30px;
+    margin: 0 auto;
+    letter-spacing: -.2px;
+}
+.subContainer{
+	position: relative;
+    width: 1130px;
+    padding: 20px 30px;
+    margin: 0 auto;
+    letter-spacing: -.2px;
+}
+#footer {
+    background-color: #FDFFFF;
+    border-top: 1px solid #2E75B6;
+}
+#footer .footer_inner {
+    width: 1130px;
+    padding: 0 30px 30px;
+    margin: 0 auto;
+}
+.img-profile{
+	width: 100px;
+    height: 100px;
+    margin: 20px 0 14px 0;
+    border-radius: 140px;
+    vertical-align:middle;	
+}
+.img-profile-inner-box{
+	display: inline-block;
+	vertical-align:middle;	
+}
+.text-profile{
+	margin-left:40px;
+	display: inline-block;	
+    vertical-align: middle;
+}
+.content{
+    min-height: 700px;
+    margin: 0 auto;
+    background-color: #fafbfc;           
+}
+.subContent{
+    min-height: 700px;
+    margin: 0 auto;
+    background-color: #fff;           
+}
+.detail_show{
+	cursor:pointer;
+}
+.sideBar {
+	float : left;
+	display: inline-block;	
+	width : -webkit-calc(-webkit-calc(100% - 1190px) / 2); /* for Chrome, Safari */
+    width :    -moz-calc(-moz-calc(100% - 1190px) / 2); /* for Firefox */
+    width :         calc(calc(100% - 1190px) / 2); /* for IE */	
+	position: -webkit-sticky;
+	position: sticky;
+	align-self: flex-start;
+	top: 20%;
+	text-align: center;
+}
+.subMenuDiv{
+	width:80%;
+	padding: 20px 10px;
+	margin:auto;
+	border: 1px solid #e8ebee;
+    border-radius: 6px;
+    -webkit-box-shadow: 0 1px 1px 0 rgb(0 0 0 / 40%);
+    box-shadow: 0 1px 1px 0 rgb(0 0 0 / 40%);
+    background-color: #fff;
+	
+}
+.TopMenuName p{
+	color: #5B5AFF;
+	display: inline-block;
+	font-weight : bolder;
+	font-size: larger;
+}
+.downMenu{
+	cursor:pointer;
+	padding: 10px 5px;	
+}
+.downMenu:hover{
+	text-decoration: underline;	  	
+}
+
+.DownMenuName {
+	background-color: #fafbfc;
+	padding: 20px 10px;	  
+}

@@ -25,19 +25,26 @@ public class ApiScheduler{
 		
 		int drwNo = 0;
 		
-	    try {
-	   		HashMap<String, Object> param = new HashMap<String, Object>();
-	    	// 로또 번호 테이블에서 마지막 로또 회차 조회
-	    	List<HashMap<String, Object>> list= apiService.selectSqlIdByHashMap("ApiDAO.selectMaxDrwNoLotto", param);
-	    	drwNo = Integer.parseInt(list.get(0).get("drwNo").toString());
-	    	// api 연결
-	    	httpConnection(drwNo);
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    } finally {
-	        System.out.println(drwNo + "회차 API 연결 및 저장 성공");
-	    }
-		
+   		HashMap<String, Object> param = new HashMap<String, Object>();
+    	// 수동 배치
+   		while(drwNo < 1047) {
+   		
+   		// 로또 번호 테이블에서 마지막 로또 회차 조회
+    	List<HashMap<String, Object>> list= apiService.selectSqlIdByHashMap("ApiDAO.selectMaxDrwNoLotto", param);
+    	drwNo = Integer.parseInt(list.get(0).get("drwNo").toString());
+    	httpConnection(drwNo);    	
+    	}
+
+    	//번호별 통계 테이블 전체 삭제
+        System.out.println("번호별 통계 테이블 전체 삭제 시작");
+    	apiService.deleteSqlIdByHashMap("ApiDAO.deleteStatsNumberTable", param);
+        System.out.println("번호별 통계 테이블 전체 삭제 종료");
+
+    	// 번호별 통계 테이블 insert
+        System.out.println("번호별 통계 테이블 insert 시작");
+    	apiService.insertSqlIdByHashMap("ApiDAO.insertStatsNumberTable", param);
+        System.out.println("번호별 통계 테이블 insert 종료");
+
 	}
 	
 	
@@ -90,19 +97,19 @@ public class ApiScheduler{
 		        	param.put("drwtNo6", 		Integer.parseInt(String.valueOf(jsonLotto.get("drwtNo6")))); 		
 		        	param.put("bnusNo",  		Integer.parseInt(String.valueOf(jsonLotto.get("bnusNo"))));  		
 		        	
-		        	apiService.insertSqlIdByHashMap("ApiDAO.insertLotto", param);
-					
+		        	apiService.insertSqlIdByHashMap("ApiDAO.insertLotto", param);	
 		        
 		        }
 		    	
-		 
+		    	System.out.println(drwNo + "회차 API 연결 및 저장 성공");
+
 		    } catch (Exception e) {
-		        e.printStackTrace();
+		       System.out.println(drwNo + "회 API 통신 실패");
 		    } finally {
 		        try {
 		            if (br != null) br.close();
 		        } catch (IOException e) {
-		            e.printStackTrace();
+				    System.out.println(drwNo + "회 API 통신 실패");
 		        }
 		    }
 		    

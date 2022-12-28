@@ -1,4 +1,4 @@
-package com.yoilLotto.api.web;
+package com.yoilLotto.com.dao;
 
 
 import java.util.HashMap;
@@ -9,20 +9,15 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
  
 @Repository
-public class ApiDAO {
+public class ComDAO {
  
     @Inject
 	private SqlSession sqlSession;    
     
     public List<HashMap<String, Object>> selectSqlIdByHashMap(String sqlId, HashMap<String, Object> param) throws Exception {
+ 
         return sqlSession.selectList(sqlId, param);
-    }
-
-    public void insertSqlIdByHashMap(String sqlId, HashMap<String, Object> param) throws Exception {
-        sqlSession.insert(sqlId, param);
+        
     }
     
-    public void deleteSqlIdByHashMap(String sqlId, HashMap<String, Object> param) throws Exception {
-        sqlSession.delete(sqlId, param);
-    }
 }

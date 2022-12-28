@@ -1,0 +1,107 @@
+.bonus{
+    display: block;
+    float: left;
+    margin-top: 11px;
+    margin-left: 7px;
+    padding-left: 14px;
+    background: url(../image/num_lst.png) no-repeat -227px -182px;
+    color: #808080;
+    letter-spacing: -1px;
+    font-size: 12px;
+}
+
+.num{margin: auto;display:block;overflow:hidden;width:33px;height:33px;background:url(../image/num_lst.png) no-repeat -420px -205px;line-height:10rem;text-indent:-1000px}
+.num.ball1{background-position:0 0}
+.num.ball2{background-position:-43px 0}
+.num.ball3{background-position:-86px 0}
+.num.ball4{background-position:-129px 0}
+.num.ball5{background-position:-172px 0}
+.num.ball6{background-position:-215px 0}
+.num.ball7{background-position:-258px 0}
+.num.ball8{background-position:-301px 0}
+.num.ball9{background-position:-344px 0}
+.num.ball10{background-position:-387px 0}
+.num.ball11{background-position:0 -43px}
+.num.ball12{background-position:-43px -43px}
+.num.ball13{background-position:-86px -43px}
+.num.ball14{background-position:-129px -43px}
+.num.ball15{background-position:-172px -43px}
+.num.ball16{background-position:-215px -43px}
+.num.ball17{background-position:-258px -43px}
+.num.ball18{background-position:-301px -43px}
+.num.ball19{background-position:-344px -43px}
+.num.ball20{background-position:-387px -43px}
+.num.ball21{background-position:0 -86px}
+.num.ball22{background-position:-43px -86px}
+.num.ball23{background-position:-86px -86px}
+.num.ball24{background-position:-129px -86px}
+.num.ball25{background-position:-172px -86px}
+.num.ball26{background-position:-215px -86px}
+.num.ball27{background-position:-258px -86px}
+.num.ball28{background-position:-301px -86px}
+.num.ball29{background-position:-344px -86px}
+.num.ball30{background-position:-387px -86px}
+.num.ball31{background-position:0 -129px}
+.num.ball32{background-position:-43px -129px}
+.num.ball33{background-position:-86px -129px}
+.num.ball34{background-position:-129px -129px}
+.num.ball35{background-position:-172px -129px}
+.num.ball36{background-position:-215px -129px}
+.num.ball37{background-position:-258px -129px}
+.num.ball38{background-position:-301px -129px}
+.num.ball39{background-position:-344px -129px}
+.num.ball40{background-position:-387px -129px}
+.num.ball41{background-position:0 -172px}
+.num.ball42{background-position:-43px -172px}
+.num.ball43{background-position:-86px -172px}
+.num.ball44{background-position:-129px -172px}
+.num.ball45{background-position:-172px -172px}
+.bonus + .num{margin-left:6px}
+
+.statsArea{
+	margin-top: 30px;
+}
+
+.statsTable {  text-align:center;  border-top: 2px solid #303030; width: 100%; border-spacing: 0; }
+.statsTable tr { height:40px; background: #fff;}
+.statsTable th { height:40px; background: #f2f2f2; border-right: 1px solid #dfdfdf; border-bottom: 1px solid #dfdfdf; }
+.statsTable td { border-right: 1px solid #dfdfdf; border-bottom: 1px solid #dfdfdf; word-wrap: break-word;} 
+
+.searchArea{
+	height: 50px;
+	background: #f2f2f2;
+	padding: 20px 30px;
+}
+
+.label_form{
+	font-size: 15px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+select {
+	height: 25px;
+    width: 100px;
+}
+
+.search-btn { 
+	float : right;
+    width: 80px;
+    height: 30px;
+    color: #fff;
+    background:#B5B4FF url(../image/icon_search.png) no-repeat 52px 50%;
+    border-radius: 5px;
+    padding: 10px 25px;
+    display: inline-block;
+    border : 1px #5B5AFF;
+    font-weight: bold;   
+    text-align:center;
+	padding: 0 30px 0 10px;	
+	cursor:pointer;
+}
+
+.form-group{
+	display: inline-block;
+	width: auto;
+	margin-left:10px;
+}

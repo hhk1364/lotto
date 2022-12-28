@@ -6,24 +6,22 @@
 <!DOCTYPE html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="content-language" content="ko">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="/js/common.js"></script>
+<link rel="stylesheet" href="/css/common.css">
+<link rel="icon" type="image/x-icon" href="/image/favicon.png" />
 </head>
 <title>오늘의 로또</title>
 </head>
 <body>
-  <div style="text-align:left;border-bottom: 1px solid #eff2f4;">
-	<div class="logo" onclick="clickMenu('/home.do')">
-		<img src="../image/favicon.png" alt="로고이미지" style="width:45px;padding-bottom: 10px;">
-  		<img src="../image/logo.png" alt="오늘의 로또 로고" style="width:120px;">
-  	</div>
-  	<div class="menuDiv">
-  		<c:if test="${fn:length(allTopMenu) != 0}">
-  			<c:forEach var="menu" items="${allTopMenu}" varStatus="status">
-  				<div class="menu" id="menu${menu.menu_no}" onclick="clickMenu('${menu.url}')"><c:out value="${menu.menu_nm}" /></div>
-	 		</c:forEach>
-	 	</c:if>
-	</div>
-  </div>
+	    <tiles:insertAttribute name="head" />
+    	<tiles:insertAttribute name="side" />
+    	<div class="subContainer">
+    		<tiles:insertAttribute name="contents" />
+    	</div>
+	    <tiles:insertAttribute name="bottom" />
 </body>
 </html>
+ 

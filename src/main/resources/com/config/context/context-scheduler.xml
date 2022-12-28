@@ -16,8 +16,8 @@
 	<!-- 매주 토요일 22시 로또 데이터 가져오기-->
 	<bean id="cronLottoDataTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
 	   	<property name="jobDetail" ref="lottoDataSyncCronBean" />
-	   	<property name="cronExpression" value="0 0 22 ? * 7 *" />
-	   	<!-- <property name="cronExpression" value="0 0/1 * * * ?" /> -->
+	    <property name="cronExpression" value="0 0 21 ? * SAT *" />
+	  <!-- <property name="cronExpression" value="0 32 11 1/1 * ? *" /> -->
 	</bean>	
 
 	<bean id="lottoDataSyncCronBean" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">

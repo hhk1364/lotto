@@ -12,5 +12,8 @@ public interface ApiService {
 	public List<HashMap<String, Object>> selectSqlIdByHashMap(String sqlId, HashMap<String, Object> param)throws Exception;
 	
 	public void insertSqlIdByHashMap(String sqlId, HashMap<String, Object> param) throws Exception;
+	
+	public void deleteSqlIdByHashMap(String sqlId, HashMap<String, Object> param) throws Exception;
 
+	
 }

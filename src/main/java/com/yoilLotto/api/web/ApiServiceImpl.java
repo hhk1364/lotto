@@ -22,5 +22,11 @@ public class ApiServiceImpl  implements ApiService{
 	public void insertSqlIdByHashMap(String sqlId, HashMap<String, Object> param)throws Exception{
 		apiDAO.insertSqlIdByHashMap(sqlId, param);
 	}
+	
+	@Override
+	public void deleteSqlIdByHashMap(String sqlId, HashMap<String, Object> param)throws Exception{
+		apiDAO.deleteSqlIdByHashMap(sqlId, param);
+	}
+	
 
 }

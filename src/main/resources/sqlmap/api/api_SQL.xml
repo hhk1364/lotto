@@ -3,6 +3,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="ApiDAO">
+	
+	<!-- 로또 번호 저장하기 -->
 	<insert id="ApiDAO.insertLotto" parameterType="hashMap">
 		INSERT INTO LOTTO_DATA_M 
 			( 
@@ -40,11 +42,78 @@
 			)
 	</insert>
 	
+	<!-- 로또 회차 중 가장 큰 숫자 가져오기 -->
 	<select id="ApiDAO.selectMaxDrwNoLotto" parameterType="hashMap" resultType="hashMap">
 		SELECT
 			MAX(drwNo) + 1 AS drwNo
 		FROM 
 			LOTTO_DATA_M
 	</select>
+	
+	<!-- 통계 만들기 위해 테이블 데이터 전체 지움 -->
+	<delete id="ApiDAO.deleteStatsNumberTable" parameterType="hashMap">
+		delete from stats_number
+	</delete>
+	
+	
+	<!-- 통계 테이블 저장하기 -->
+	<insert id="ApiDAO.insertStatsNumberTable" parameterType="hashMap">
+		INSERT INTO stats_number (drwNo, drwNoDate, num, isBonus)
+			(select
+				drwNo,
+			    drwNoDate,
+			    drwtNo1 as num,
+			    'N' as isBonus
+			from
+				lotto_data_m)
+		union All	
+			(select
+				drwNo,
+			    drwNoDate,
+			    drwtNo2 as num,
+			    'N' as isBonus
+			from
+				lotto_data_m)
+		union All	
+			(select
+				drwNo,
+			    drwNoDate,
+			    drwtNo3 as num,
+			    'N' as isBonus
+			from
+				lotto_data_m)
+		union All
+			(select
+				drwNo,
+			    drwNoDate,
+			    drwtNo4 as num,
+			    'N' as isBonus
+			from
+				lotto_data_m)
+		union All
+			(select
+				drwNo,
+			    drwNoDate,
+			    drwtNo5 as num,
+			    'N' as isBonus
+			from
+				lotto_data_m)
+		union All
+			(select
+				drwNo,
+			    drwNoDate,
+			    drwtNo6 as num,
+			    'N' as isBonus
+			from
+				lotto_data_m)
+		union All
+			(select
+				drwNo,
+			    drwNoDate,
+			    bnusNo as num,
+			    'Y' as isBonus
+			from
+				lotto_data_m)
+	</insert>
 	
 </mapper>

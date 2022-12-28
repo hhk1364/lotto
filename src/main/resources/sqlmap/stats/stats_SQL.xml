@@ -3,5 +3,334 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="StatsDAO">
+
+	<!-- 번호별 당첨통계 확인 -->
+	<select id="StatsDAO.selectNumberStats" parameterType="statsVO" resultType="hashMap">
+		SELECT
+			 num,
+			 COUNT(*) as cnt,
+     		 round(COUNT(*) / (select MAX(drwNo) from lotto_data_m ) * 100, 2) as percent
+		FROM 
+			stats_number
+		<where>
+			<if test='isBonus == "N"'>and isBonus = "N"</if>
+			<if test='isBonus == "onlyBonus"'>and isBonus = "Y"</if>
+			<if test='drwNoStart != null'>and drwNo <![CDATA[ >= ]]> #{drwNoStart}</if>
+			<if test='drwNoEnd != null'>and drwNo <![CDATA[ <= ]]>  #{drwNoEnd}</if>
+			<if test='drwNoDateStart != null'>and drwNoDate <![CDATA[ >= ]]> #{drwNoDateStart}</if>
+			<if test='drwNoDateEnd != null'>and drwNoDate <![CDATA[ <= ]]>  #{drwNoDateEnd}</if>
+		</where>
+		GROUP BY num
+		HAVING COUNT(*) <![CDATA[ > ]]> 0
+		order by COUNT(*) desc
+	</select>
+	
+	<!-- 회차 리스트 -->
+	<select id="StatsDAO.selectDrwNoList" parameterType="hashMap" resultType="hashMap">
+		select 
+			drwNo 
+		from 
+			lotto_data_m 
+		order by 
+			drwNo asc
+	</select>
+	
+	<!-- 회차 리스트 -->
+	<select id="StatsDAO.selectDrwNoDateList" parameterType="hashMap" resultType="hashMap">
+		select 
+			min(drwNoDate) as drwNoStartMin, 
+			max(drwNoDate) as drwNoStartMax 
+		from 
+			lotto_data_m 
+		order by 
+			drwNo asc
+	</select>
+	
+	
+	<!-- 구간별 당첨통계 -->
+	<select id="StatsDAO.selectSectionStats" parameterType="statsVO" resultType="hashMap">
+			select 
+				'1~5' as num,
+				sum(cnt) as cnt,
+		        round(sum(cnt) / (select MAX(drwNo) from lotto_data_m ) * 100, 2) as percent
+			from
+			(
+				SELECT
+					 num,
+					 COUNT(*) as cnt
+				FROM 
+					stats_number
+				where
+					num <![CDATA[ < ]]> 6
+					<if test='isBonus == "N"'>and isBonus = "N"</if>
+					<if test='isBonus == "onlyBonus"'>and isBonus = "Y"</if>
+					<if test='drwNoStart != null'>and drwNo <![CDATA[ >= ]]> #{drwNoStart}</if>
+					<if test='drwNoEnd != null'>and drwNo <![CDATA[ <= ]]>  #{drwNoEnd}</if>
+					<if test='drwNoDateStart != null'>and drwNoDate <![CDATA[ >= ]]> #{drwNoDateStart}</if>
+					<if test='drwNoDateEnd != null'>and drwNoDate <![CDATA[ <= ]]>  #{drwNoDateEnd}</if>
+				GROUP BY num
+				HAVING COUNT(*) <![CDATA[ > ]]> 0
+				order by COUNT(*) desc
+			) A
+		union All
+			select 
+				'6~10',
+				sum(cnt) as cnt,
+		        round(sum(cnt) / (select MAX(drwNo) from lotto_data_m ) * 100, 2) as percent
+			from
+			(
+				SELECT
+					 num,
+					 COUNT(*) as cnt
+				FROM 
+					stats_number
+				where
+					5 <![CDATA[ < ]]> num and num <![CDATA[ < ]]> 11 
+					<if test='isBonus == "N"'>and isBonus = "N"</if>
+					<if test='isBonus == "onlyBonus"'>and isBonus = "Y"</if>
+					<if test='drwNoStart != null'>and drwNo <![CDATA[ >= ]]> #{drwNoStart}</if>
+					<if test='drwNoEnd != null'>and drwNo <![CDATA[ <= ]]>  #{drwNoEnd}</if>
+					<if test='drwNoDateStart != null'>and drwNoDate <![CDATA[ >= ]]> #{drwNoDateStart}</if>
+					<if test='drwNoDateEnd != null'>and drwNoDate <![CDATA[ <= ]]>  #{drwNoDateEnd}</if>
+				GROUP BY num
+				HAVING COUNT(*) <![CDATA[ > ]]> 0
+				order by COUNT(*) desc
+			) B
+		union All
+			select 
+				'11~15',
+				sum(cnt) as cnt,
+		        round(sum(cnt) / (select MAX(drwNo) from lotto_data_m ) * 100, 2) as percent
+			from
+			(
+				SELECT
+					 num,
+					 COUNT(*) as cnt
+				FROM 
+					stats_number
+				where
+					10 <![CDATA[ < ]]> num and num <![CDATA[ < ]]> 16 
+					<if test='isBonus == "N"'>and isBonus = "N"</if>
+					<if test='isBonus == "onlyBonus"'>and isBonus = "Y"</if>
+					<if test='drwNoStart != null'>and drwNo <![CDATA[ >= ]]> #{drwNoStart}</if>
+					<if test='drwNoEnd != null'>and drwNo <![CDATA[ <= ]]>  #{drwNoEnd}</if>
+					<if test='drwNoDateStart != null'>and drwNoDate <![CDATA[ >= ]]> #{drwNoDateStart}</if>
+					<if test='drwNoDateEnd != null'>and drwNoDate <![CDATA[ <= ]]>  #{drwNoDateEnd}</if>
+				GROUP BY num
+				HAVING COUNT(*) <![CDATA[ > ]]> 0
+				order by COUNT(*) desc
+			) C
+		union All
+			select 
+				'16~20',
+				sum(cnt) as cnt,
+		        round(sum(cnt) / (select MAX(drwNo) from lotto_data_m ) * 100, 2) as percent
+			from
+			(
+				SELECT
+					 num,
+					 COUNT(*) as cnt
+				FROM 
+					stats_number
+				where
+					15 <![CDATA[ < ]]> num and num <![CDATA[ < ]]> 21 
+					<if test='isBonus == "N"'>and isBonus = "N"</if>
+					<if test='isBonus == "onlyBonus"'>and isBonus = "Y"</if>
+					<if test='drwNoStart != null'>and drwNo <![CDATA[ >= ]]> #{drwNoStart}</if>
+					<if test='drwNoEnd != null'>and drwNo <![CDATA[ <= ]]>  #{drwNoEnd}</if>
+					<if test='drwNoDateStart != null'>and drwNoDate <![CDATA[ >= ]]> #{drwNoDateStart}</if>
+					<if test='drwNoDateEnd != null'>and drwNoDate <![CDATA[ <= ]]>  #{drwNoDateEnd}</if>
+				GROUP BY num
+				HAVING COUNT(*) <![CDATA[ > ]]> 0
+				order by COUNT(*) desc
+			) D
+		union All
+			select 
+				'21~25',
+				sum(cnt) as cnt,
+		        round(sum(cnt) / (select MAX(drwNo) from lotto_data_m ) * 100, 2) as percent
+			from
+			(
+				SELECT
+					 num,
+					 COUNT(*) as cnt
+				FROM 
+					stats_number
+				where
+					20 <![CDATA[ < ]]> num and num <![CDATA[ < ]]> 26 
+					<if test='isBonus == "N"'>and isBonus = "N"</if>
+					<if test='isBonus == "onlyBonus"'>and isBonus = "Y"</if>
+					<if test='drwNoStart != null'>and drwNo <![CDATA[ >= ]]> #{drwNoStart}</if>
+					<if test='drwNoEnd != null'>and drwNo <![CDATA[ <= ]]>  #{drwNoEnd}</if>
+					<if test='drwNoDateStart != null'>and drwNoDate <![CDATA[ >= ]]> #{drwNoDateStart}</if>
+					<if test='drwNoDateEnd != null'>and drwNoDate <![CDATA[ <= ]]>  #{drwNoDateEnd}</if>
+				GROUP BY num
+				HAVING COUNT(*) <![CDATA[ > ]]> 0
+				order by COUNT(*) desc
+			) E
+		union All
+			select 
+				'26~30',
+				sum(cnt) as cnt,
+		        round(sum(cnt) / (select MAX(drwNo) from lotto_data_m ) * 100, 2) as percent
+			from
+			(
+				SELECT
+					 num,
+					 COUNT(*) as cnt
+				FROM 
+					stats_number
+				where
+					25 <![CDATA[ < ]]> num and num <![CDATA[ < ]]> 31 
+					<if test='isBonus == "N"'>and isBonus = "N"</if>
+					<if test='isBonus == "onlyBonus"'>and isBonus = "Y"</if>
+					<if test='drwNoStart != null'>and drwNo <![CDATA[ >= ]]> #{drwNoStart}</if>
+					<if test='drwNoEnd != null'>and drwNo <![CDATA[ <= ]]>  #{drwNoEnd}</if>
+					<if test='drwNoDateStart != null'>and drwNoDate <![CDATA[ >= ]]> #{drwNoDateStart}</if>
+					<if test='drwNoDateEnd != null'>and drwNoDate <![CDATA[ <= ]]>  #{drwNoDateEnd}</if>
+				GROUP BY num
+				HAVING COUNT(*) <![CDATA[ > ]]> 0
+				order by COUNT(*) desc
+			) F
+		union All
+			select 
+				'31~35',
+				sum(cnt) as cnt,
+		        round(sum(cnt) / (select MAX(drwNo) from lotto_data_m ) * 100, 2) as percent
+			from
+			(
+				SELECT
+					 num,
+					 COUNT(*) as cnt
+				FROM 
+					stats_number
+				where
+					30 <![CDATA[ < ]]> num and num <![CDATA[ < ]]> 36 
+					<if test='isBonus == "N"'>and isBonus = "N"</if>
+					<if test='isBonus == "onlyBonus"'>and isBonus = "Y"</if>
+					<if test='drwNoStart != null'>and drwNo <![CDATA[ >= ]]> #{drwNoStart}</if>
+					<if test='drwNoEnd != null'>and drwNo <![CDATA[ <= ]]>  #{drwNoEnd}</if>
+					<if test='drwNoDateStart != null'>and drwNoDate <![CDATA[ >= ]]> #{drwNoDateStart}</if>
+					<if test='drwNoDateEnd != null'>and drwNoDate <![CDATA[ <= ]]>  #{drwNoDateEnd}</if>
+				GROUP BY num
+				HAVING COUNT(*) <![CDATA[ > ]]> 0
+				order by COUNT(*) desc
+			) F
+		union All
+			select 
+				'36~40',
+				sum(cnt) as cnt,
+		        round(sum(cnt) / (select MAX(drwNo) from lotto_data_m ) * 100, 2) as percent
+			from
+			(
+				SELECT
+					 num,
+					 COUNT(*) as cnt
+				FROM 
+					stats_number
+				where
+					35 <![CDATA[ < ]]> num and num <![CDATA[ < ]]> 41 
+					<if test='isBonus == "N"'>and isBonus = "N"</if>
+					<if test='isBonus == "onlyBonus"'>and isBonus = "Y"</if>
+					<if test='drwNoStart != null'>and drwNo <![CDATA[ >= ]]> #{drwNoStart}</if>
+					<if test='drwNoEnd != null'>and drwNo <![CDATA[ <= ]]>  #{drwNoEnd}</if>
+					<if test='drwNoDateStart != null'>and drwNoDate <![CDATA[ >= ]]> #{drwNoDateStart}</if>
+					<if test='drwNoDateEnd != null'>and drwNoDate <![CDATA[ <= ]]>  #{drwNoDateEnd}</if>
+				GROUP BY num
+				HAVING COUNT(*) <![CDATA[ > ]]> 0
+				order by COUNT(*) desc
+			) G
+		union All
+			select 
+				'41~45',
+				sum(cnt) as cnt,
+		        round(sum(cnt) / (select MAX(drwNo) from lotto_data_m ) * 100, 2) as percent
+			from
+			(
+				SELECT
+					 num,
+					 COUNT(*) as cnt
+				FROM 
+					stats_number
+				where
+					40 <![CDATA[ < ]]> num
+					<if test='isBonus == "N"'>and isBonus = "N"</if>
+					<if test='isBonus == "onlyBonus"'>and isBonus = "Y"</if>
+					<if test='drwNoStart != null'>and drwNo <![CDATA[ >= ]]> #{drwNoStart}</if>
+					<if test='drwNoEnd != null'>and drwNo <![CDATA[ <= ]]>  #{drwNoEnd}</if>
+					<if test='drwNoDateStart != null'>and drwNoDate <![CDATA[ >= ]]> #{drwNoDateStart}</if>
+					<if test='drwNoDateEnd != null'>and drwNoDate <![CDATA[ <= ]]>  #{drwNoDateEnd}</if>
+				GROUP BY num
+				HAVING COUNT(*) <![CDATA[ > ]]> 0
+				order by COUNT(*) desc
+			) H
+	</select>
+	
+	<!-- 홀짝 당첨통계 -->
+	<select id="StatsDAO.selectOddEvenStats" parameterType="statsVO" resultType="hashMap">
+			select 
+				'짝수' as kind,
+				COUNT(*) as cnt
+			from 
+				stats_number 
+			where 
+				num % 2 = 0
+				<if test='isBonus == "N"'>and isBonus = "N"</if>
+				<if test='isBonus == "onlyBonus"'>and isBonus = "Y"</if>
+				<if test='drwNoStart != null'>and drwNo <![CDATA[ >= ]]> #{drwNoStart}</if>
+				<if test='drwNoEnd != null'>and drwNo <![CDATA[ <= ]]>  #{drwNoEnd}</if>
+				<if test='drwNoDateStart != null'>and drwNoDate <![CDATA[ >= ]]> #{drwNoDateStart}</if>
+				<if test='drwNoDateEnd != null'>and drwNoDate <![CDATA[ <= ]]>  #{drwNoDateEnd}</if>
+		union all
+			select 
+				'홀수' as kind,
+				COUNT(*) as cnt
+			from 
+				stats_number 
+			where 
+				num % 2 != 0
+				<if test='isBonus == "N"'>and isBonus = "N"</if>
+				<if test='isBonus == "onlyBonus"'>and isBonus = "Y"</if>
+				<if test='drwNoStart != null'>and drwNo <![CDATA[ >= ]]> #{drwNoStart}</if>
+				<if test='drwNoEnd != null'>and drwNo <![CDATA[ <= ]]>  #{drwNoEnd}</if>
+				<if test='drwNoDateStart != null'>and drwNoDate <![CDATA[ >= ]]> #{drwNoDateStart}</if>
+				<if test='drwNoDateEnd != null'>and drwNoDate <![CDATA[ <= ]]>  #{drwNoDateEnd}</if>
+	</select>
+	
+	<!-- 번호 합 통계 -->
+	<select id="StatsDAO.selectSumNumberStats" parameterType="statsVO" resultType="hashMap">
+			select 
+				drwNo, 
+			    drwNoDate, 
+			    <if test='isBonus != "onlyBonus"'>
+				    drwtNo1, 
+				    drwtNo2, 
+				    drwtNo3, 
+				    drwtNo4, 
+				    drwtNo5, 
+				    drwtNo6,
+			    </if>
+			     <if test='isBonus == "N"'>
+			    	(drwtNo1 + drwtNo2 + drwtNo3 + drwtNo4 + drwtNo5 + drwtNo6) as sum
+			    </if>
+			    <if test='isBonus == "onlyBonus"'>
+			    	bnusNo,
+			    	bnusNo as sum
+			    </if>
+			    <if test='isBonus != "N" and isBonus != "onlyBonus"'>
+			    	bnusNo,
+			    	(drwtNo1 + drwtNo2 + drwtNo3 + drwtNo4 + drwtNo5 + drwtNo6 + bnusNo) as sum
+			    </if>
+			from 
+				lotto_data_m
+			<where>
+				<if test='drwNoStart != null'>and drwNo <![CDATA[ >= ]]> #{drwNoStart}</if>
+				<if test='drwNoEnd != null'>and drwNo <![CDATA[ <= ]]>  #{drwNoEnd}</if>
+				<if test='drwNoDateStart != null'>and drwNoDate <![CDATA[ >= ]]> #{drwNoDateStart}</if>
+				<if test='drwNoDateEnd != null'>and drwNoDate <![CDATA[ <= ]]>  #{drwNoDateEnd}</if>
+			</where> 
+			ORDER BY 
+				drwNo desc 
+	</select>
 	
 </mapper>
