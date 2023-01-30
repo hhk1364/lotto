@@ -4,5 +4,6 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.yoilLotto.stats.StatsVO" alias="statsVO"/>
+		<typeAlias type="com.yoilLotto.round.RoundVO" alias="roundVO"/>
 	</typeAliases>
 </configuration>

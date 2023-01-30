@@ -11,4 +11,6 @@ public interface RoundService {
 
 	public List<HashMap<String, Object>> selectSqlIdByHashMap(String sqlId, HashMap<String, Object> param)throws Exception;
 	
+	public List<HashMap<String, Object>> selectSqlIdByVO(String sqlId, RoundVO vo)throws Exception;
+	
 }

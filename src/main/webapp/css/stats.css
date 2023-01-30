@@ -81,7 +81,7 @@
 
 select {
 	height: 25px;
-    width: 100px;
+    width: 130px;
 }
 
 .search-btn { 
@@ -105,3 +105,9 @@ select {
 	width: auto;
 	margin-left:10px;
 }
+
+.gp_tab_menu ul {display:table; width:100%; table-layout:fixed;}
+.gp_tab_menu ul li {display:table-cell; position:relative; vertical-align:top; border-bottom:1px solid #dfdfdf; background:#f5f5f5;}
+.gp_tab_menu ul li a {display:block; line-height:30px; text-align:center; color:#666;text-decoration: none;}
+.gp_tab_menu ul li.action {border:1px solid #dfdfdf; border-bottom:none; background:none;}
+.gp_tab_menu ul li.action a {color:#333; font-weight:600;text-decoration: none;}

@@ -18,5 +18,9 @@ public class RoundServiceImpl  implements RoundService{
 		return roundDAO.selectSqlIdByHashMap(sqlId, param);
 	}
 	
+	@Override
+	public List<HashMap<String, Object>> selectSqlIdByVO(String sqlId, RoundVO vo)throws Exception{
+		return roundDAO.selectSqlIdByVO(sqlId, vo);
+	}
 
 }
