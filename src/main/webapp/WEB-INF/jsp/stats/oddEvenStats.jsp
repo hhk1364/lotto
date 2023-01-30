@@ -31,7 +31,7 @@
 				<select id="drwNoStart" name="drwNoStart">
 					<c:if test="${fn:length(drwNoList) > 0}">
 						<c:forEach var="list" items="${drwNoList}" varStatus="status">
-							<option value="<c:out value='${list.drwNo}'/>" <c:if test="${list.drwNo eq statsVO.drwNoStart}">selected</c:if>><c:out value='${list.drwNo}'/></option>
+							<option value="<c:out value='${list.drwNo}'/>" <c:if test="${list.drwNo eq statsVO.drwNoStart}">selected</c:if>><c:out value='${list.drwNo}'/>  (<c:out value='${list.drwNoDate}'/>)</option>
 						</c:forEach>
 					</c:if>
 				</select>
@@ -39,19 +39,12 @@
 				<select id="drwNoEnd" name="drwNoEnd">
 					<c:if test="${fn:length(drwNoList) > 0}">
 						<c:forEach var="list" items="${drwNoList}" varStatus="status">
-							<option value="<c:out value='${list.drwNo}'/>" <c:if test="${list.drwNo eq statsVO.drwNoEnd}">selected</c:if>><c:out value='${list.drwNo}'/></option>
+							<option value="<c:out value='${list.drwNo}'/>" <c:if test="${list.drwNo eq statsVO.drwNoEnd}">selected</c:if>><c:out value='${list.drwNo}'/>  (<c:out value='${list.drwNoDate}'/>)</option>
 						</c:forEach>
 					</c:if>
 				</select>
 			</div>
-			
-			<div class="form-group">
-				<label class="label_form">날짜</label>
-				<input type="date" name="drwNoDateStart" id="drwNoDateStart" value="<c:out value='${statsVO.drwNoDateStart}'/>">
-				~
-				<input type="date" name="drwNoDateEnd" id="drwNoDateEnd" value="<c:out value='${statsVO.drwNoDateEnd}'/>">
-			</div>
-			
+						
 			<button class="search-btn" form="form">검색</button>
 	   </div>
 	   <div class="statsArea">
@@ -66,7 +59,7 @@
 	   				<th scope="col">순번</th>
 	   				<th scope="col">종류</th>
 					<th scope="col">당첨횟수</th>
-					<th scope="col">당첨확률(당첨횟수/전체회차)</th>		
+					<th scope="col">당첨확률</th>		
 	   			</thead>
 	   			<tbody>
 	   				<c:choose>
@@ -83,7 +76,7 @@
 	   									<c:out value="${result.cnt}"></c:out>
 	   								</td>
 	   								<td>
-	   									<%-- <c:out value="${result.percent}"></c:out> --%>
+	   									<c:out value="${result.percent}"></c:out>
 	   								</td>
 	   							</tr>
 	   						</c:forEach>

@@ -1,12 +1,16 @@
 package com.yoilLotto.round;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.yoilLotto.round.RoundService;
+import com.yoilLotto.stats.StatsVO;
 
 import java.util.HashMap;
 import java.util.List;
@@ -25,25 +29,98 @@ public class RoundController {
 	
 	@RequestMapping(value = "/round/round.do")
 	public String goRoundPage(HttpServletRequest request,
-							 @RequestParam(value = "drwNo", required = false) String drwNo,
-							 ModelMap model)throws Exception{
+								@ModelAttribute("RoundVO") RoundVO roundVO,
+								ModelMap model)throws Exception{
 	
 		HashMap<String, Object> param = new HashMap<String, Object>();
 		
-		try {
-			
-			List<HashMap<String, Object>> result = roundService.selectSqlIdByHashMap("RoundDAO.selectDrwNoLotto", param);
-			
-			result.get(0).put("totSellamntKoreanVer", NumberToKor(result.get(0).get("totSellamnt").toString()));
-			result.get(0).put("firstWinamntKoreanVer", NumberToKor(result.get(0).get("firstWinamnt").toString()));
-			result.get(0).put("firstAccumamntKoreanVer", NumberToKor(result.get(0).get("firstAccumamnt").toString()));
-			
-			model.addAttribute("result", result);
-			
-		}catch (Exception e) {
-	        e.printStackTrace();
-	    }
-		 
+		// 당첨 정보
+		List<HashMap<String, Object>> result = roundService.selectSqlIdByVO("RoundDAO.selectDrwNoLotto", roundVO);
+		
+		// 당첨 판매점(전체)
+		List<HashMap<String, Object>> storeResultTmp = roundService.selectSqlIdByVO("RoundDAO.selectDrwNoLottoStore", roundVO);
+		
+		// 당첨 판매점(1등)
+		roundVO.setGrade("1");
+		List<HashMap<String, Object>> storeFirstResultTmp = roundService.selectSqlIdByVO("RoundDAO.selectDrwNoLottoStoreGrade", roundVO);
+
+		// 당첨 판매점(2등)
+		roundVO.setGrade("2");
+		List<HashMap<String, Object>> storeSecondResultTmp = roundService.selectSqlIdByVO("RoundDAO.selectDrwNoLottoStoreGrade", roundVO);
+
+		JSONArray storeResult = new JSONArray();
+		JSONArray storeFirstResult = new JSONArray();
+		JSONArray storeSecondResult = new JSONArray();
+
+		//해당 리스트 for문으로 jsonarray에 담기
+		for(HashMap<String,Object> c : storeResultTmp) {
+			//json 객체 생성
+			JSONObject allStore = new JSONObject ();
+
+			allStore.put("drwNo",c.get("drwNo"));
+			allStore.put("grade",c.get("grade"));
+			allStore.put("seq",c.get("seq"));
+			allStore.put("storeNm",c.get("storeNm"));
+			allStore.put("gb",c.get("gb"));
+			allStore.put("address",c.get("address"));
+
+		    //만들어진 하나의 json 객체 담기
+			storeResult.put(allStore);
+		}
+		
+		//해당 리스트 for문으로 jsonarray에 담기
+		for(HashMap<String,Object> c : storeFirstResultTmp) {
+			//json 객체 생성
+			JSONObject allStore = new JSONObject ();
+
+			allStore.put("drwNo",c.get("drwNo"));
+			allStore.put("grade",c.get("grade"));
+			allStore.put("seq",c.get("seq"));
+			allStore.put("storeNm",c.get("storeNm"));
+			allStore.put("gb",c.get("gb"));
+			allStore.put("address",c.get("address"));
+
+		    //만들어진 하나의 json 객체 담기
+			storeFirstResult.put(allStore);
+		}
+				
+		//해당 리스트 for문으로 jsonarray에 담기
+		for(HashMap<String,Object> c : storeSecondResultTmp) {
+			//json 객체 생성
+			JSONObject allStore = new JSONObject ();
+
+			allStore.put("drwNo",c.get("drwNo"));
+			allStore.put("grade",c.get("grade"));
+			allStore.put("seq",c.get("seq"));
+			allStore.put("storeNm",c.get("storeNm"));
+			allStore.put("gb",c.get("gb"));
+			allStore.put("address",c.get("address"));
+
+		    //만들어진 하나의 json 객체 담기
+			storeSecondResult.put(allStore);
+		}
+		
+		result.get(0).put("totSellamntKoreanVer", NumberToKor(result.get(0).get("totSellamnt").toString()));
+		result.get(0).put("firstWinamntKoreanVer", NumberToKor(result.get(0).get("firstWinamnt").toString()));
+		result.get(0).put("firstAccumamntKoreanVer", NumberToKor(result.get(0).get("firstAccumamnt").toString()));
+		
+		
+		List<HashMap<String, Object>> drwNoList = (List<HashMap<String, Object>>) roundService.selectSqlIdByHashMap("RoundDAO.selectDrwNoList", param);
+		
+		if(roundVO.getDrwNo() == null) {
+			roundVO.setDrwNo(drwNoList.get(0).get("drwNo").toString());
+		}
+		
+		model.addAttribute("result", result);
+		model.addAttribute("storeResultTmp", storeResultTmp);
+		model.addAttribute("storeFirstResultTmp", storeFirstResultTmp);
+		model.addAttribute("storeSecondResultTmp", storeSecondResultTmp);
+		model.addAttribute("storeResult", storeResult);
+		model.addAttribute("storeFirstResult", storeFirstResult);
+		model.addAttribute("storeSecondResult", storeSecondResult);
+		model.addAttribute("roundVO", roundVO);
+		model.addAttribute("drwNoList", drwNoList);
+		
 		return "/round/round";
 	}
 	

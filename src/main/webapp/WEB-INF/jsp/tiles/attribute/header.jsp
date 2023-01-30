@@ -8,6 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9df61b4d32597b0e0762c05280b1b969&libraries=services,clusterer,drawing"></script>
 </head>
 <title>오늘의 로또</title>
 </head>

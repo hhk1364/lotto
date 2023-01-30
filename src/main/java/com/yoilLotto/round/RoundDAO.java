@@ -20,4 +20,10 @@ public class RoundDAO {
         
     }
     
+    public List<HashMap<String, Object>> selectSqlIdByVO(String sqlId, RoundVO vo) throws Exception {
+    	 
+        return sqlSession.selectList(sqlId, vo);
+        
+    }
+    
 }

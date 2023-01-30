@@ -1,5 +1,7 @@
 package com.yoilLotto.home;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -35,11 +37,85 @@ public class HomeController {
 			
 			List<HashMap<String, Object>> result = homeService.selectSqlIdByHashMap("RoundDAO.selectDrwNoLotto", param);
 			
+			// 당첨 판매점(전체)
+			List<HashMap<String, Object>> storeResultTmp = homeService.selectSqlIdByHashMap("RoundDAO.selectDrwNoLottoStore", param);
+			
+			// 당첨 판매점(1등)
+			param.put("grade","1");
+			List<HashMap<String, Object>> storeFirstResultTmp = homeService.selectSqlIdByHashMap("RoundDAO.selectDrwNoLottoStoreGrade", param);
+
+			// 당첨 판매점(2등)
+			param.put("grade","2");
+			List<HashMap<String, Object>> storeSecondResultTmp = homeService.selectSqlIdByHashMap("RoundDAO.selectDrwNoLottoStoreGrade", param);
+
+			JSONArray storeResult = new JSONArray();
+			JSONArray storeFirstResult = new JSONArray();
+			JSONArray storeSecondResult = new JSONArray();
+
+			//해당 리스트 for문으로 jsonarray에 담기
+			for(HashMap<String,Object> c : storeResultTmp) {
+				//json 객체 생성
+				JSONObject allStore = new JSONObject ();
+
+				allStore.put("drwNo",c.get("drwNo"));
+				allStore.put("grade",c.get("grade"));
+				allStore.put("seq",c.get("seq"));
+				allStore.put("storeNm",c.get("storeNm"));
+				allStore.put("gb",c.get("gb"));
+				allStore.put("address",c.get("address"));
+
+			    //만들어진 하나의 json 객체 담기
+				storeResult.put(allStore);
+			}
+			
+			//해당 리스트 for문으로 jsonarray에 담기
+			for(HashMap<String,Object> c : storeFirstResultTmp) {
+				//json 객체 생성
+				JSONObject allStore = new JSONObject ();
+
+				allStore.put("drwNo",c.get("drwNo"));
+				allStore.put("grade",c.get("grade"));
+				allStore.put("seq",c.get("seq"));
+				allStore.put("storeNm",c.get("storeNm"));
+				allStore.put("gb",c.get("gb"));
+				allStore.put("address",c.get("address"));
+
+			    //만들어진 하나의 json 객체 담기
+				storeFirstResult.put(allStore);
+			}
+					
+			//해당 리스트 for문으로 jsonarray에 담기
+			for(HashMap<String,Object> c : storeSecondResultTmp) {
+				//json 객체 생성
+				JSONObject allStore = new JSONObject ();
+
+				allStore.put("drwNo",c.get("drwNo"));
+				allStore.put("grade",c.get("grade"));
+				allStore.put("seq",c.get("seq"));
+				allStore.put("storeNm",c.get("storeNm"));
+				allStore.put("gb",c.get("gb"));
+				allStore.put("address",c.get("address"));
+
+			    //만들어진 하나의 json 객체 담기
+				storeSecondResult.put(allStore);
+			}
+			
+			
 			result.get(0).put("totSellamntKoreanVer", NumberToKor(result.get(0).get("totSellamnt").toString()));
 			result.get(0).put("firstWinamntKoreanVer", NumberToKor(result.get(0).get("firstWinamnt").toString()));
 			result.get(0).put("firstAccumamntKoreanVer", NumberToKor(result.get(0).get("firstAccumamnt").toString()));
 			
 			model.addAttribute("result", result);
+			
+			model.addAttribute("storeResultTmp", storeResultTmp);
+			model.addAttribute("storeFirstResultTmp", storeFirstResultTmp);
+			model.addAttribute("storeSecondResultTmp", storeSecondResultTmp);
+		
+			
+			model.addAttribute("storeResult", storeResult);
+			model.addAttribute("storeFirstResult", storeFirstResult);
+			model.addAttribute("storeSecondResult", storeSecondResult);
+			
 			
 		}catch (Exception e) {
 	        e.printStackTrace();

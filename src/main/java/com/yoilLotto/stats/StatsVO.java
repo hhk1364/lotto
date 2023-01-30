@@ -8,8 +8,6 @@ public class StatsVO implements Serializable {
 	private String isBonus;
 	private String drwNoStart;
 	private String drwNoEnd;
-	private String drwNoDateStart;
-	private String drwNoDateEnd;
 	
 	public String getIsBonus() {
 		return isBonus;
@@ -29,20 +27,5 @@ public class StatsVO implements Serializable {
 	public void setDrwNoEnd(String drwNoEnd) {
 		this.drwNoEnd = drwNoEnd;
 	}
-	public String getDrwNoDateStart() {
-		return drwNoDateStart;
-	}
-	public void setDrwNoDateStart(String drwNoDateStart) {
-		this.drwNoDateStart = drwNoDateStart;
-	}
-	public String getDrwNoDateEnd() {
-		return drwNoDateEnd;
-	}
-	public void setDrwNoDateEnd(String drwNoDateEnd) {
-		this.drwNoDateEnd = drwNoDateEnd;
-	}
-	
-	
-	
-	
+
 }

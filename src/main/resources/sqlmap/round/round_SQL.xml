@@ -4,7 +4,7 @@
 
 <mapper namespace="RoundDAO">
 	<!-- 회차별 담청정보 확인 -->
-	<select id="RoundDAO.selectDrwNoLotto" parameterType="hashMap" resultType="hashMap">
+	<select id="RoundDAO.selectDrwNoLotto" parameterType="roundVO" resultType="hashMap">
 		SELECT
 			drwNo,
 			drwNoDate,
@@ -31,6 +31,54 @@
  				</otherwise>	
 		 	</choose>
 		</where>
+	</select>
+	
+	<!-- 회차별 당첨지역 (전체) -->
+	<select id="RoundDAO.selectDrwNoLottoStore" parameterType="roundVO" resultType="hashMap">
+		SELECT
+			*
+		FROM 
+			lotto_store_m
+		<where>
+			<choose>
+			    <when test="drwNo != null">
+			      	drwNo = #{drwNo}
+			    </when>
+			    <otherwise>
+ 					drwNo = (select max(drwNo) from lotto_data_m)			    
+ 				</otherwise>	
+		 	</choose>
+		</where>
+	</select>
+	
+	<!-- 회차별 당첨지역 (등수) -->
+	<select id="RoundDAO.selectDrwNoLottoStoreGrade" parameterType="roundVO" resultType="hashMap">
+		SELECT
+			*
+		FROM 
+			lotto_store_m
+		<where>
+			<choose>
+			    <when test="drwNo != null">
+			      	drwNo = #{drwNo}
+			    </when>
+			    <otherwise>
+ 					drwNo = (select max(drwNo) from lotto_data_m)			    
+ 				</otherwise>	
+		 	</choose>
+		 	and grade = #{grade}
+		</where>
+	</select>
+	
+	<!-- 회차 리스트 -->
+	<select id="RoundDAO.selectDrwNoList" parameterType="hashMap" resultType="hashMap">
+		select 
+			drwNo,
+			drwNoDate 
+		from 
+			lotto_data_m 
+		order by 
+			drwNo desc
 	</select>
 	
 </mapper>

@@ -34,19 +34,12 @@ public class StatsController {
 		
 			List<HashMap<String, Object>> result = (List<HashMap<String, Object>>) statsService.selectSqlIdByStatsVO("StatsDAO.selectNumberStats", statsVO);
 			List<HashMap<String, Object>> drwNoList = (List<HashMap<String, Object>>) statsService.selectSqlIdByHashMap("StatsDAO.selectDrwNoList", param);
-			List<HashMap<String, Object>> drwNoDateList = (List<HashMap<String, Object>>) statsService.selectSqlIdByHashMap("StatsDAO.selectDrwNoDateList", param);
 
 			if(statsVO.getDrwNoStart() == null) {
 				statsVO.setDrwNoStart("1");
 			}
 			if(statsVO.getDrwNoEnd() == null) {
-				statsVO.setDrwNoEnd(drwNoList.get(drwNoList.size()-1).get("drwNo").toString());
-			}
-			if(statsVO.getDrwNoDateStart() == null) {
-				statsVO.setDrwNoDateStart(drwNoDateList.get(0).get("drwNoStartMin").toString());
-			}
-			if(statsVO.getDrwNoDateEnd() == null) {
-				statsVO.setDrwNoDateEnd(drwNoDateList.get(0).get("drwNoStartMax").toString());
+				statsVO.setDrwNoEnd(drwNoList.get(0).get("drwNo").toString());
 			}
 			
 			model.addAttribute("result", result);
@@ -67,19 +60,12 @@ public class StatsController {
 		
 			List<HashMap<String, Object>> result = (List<HashMap<String, Object>>) statsService.selectSqlIdByStatsVO("StatsDAO.selectSectionStats", statsVO);
 			List<HashMap<String, Object>> drwNoList = (List<HashMap<String, Object>>) statsService.selectSqlIdByHashMap("StatsDAO.selectDrwNoList", param);
-			List<HashMap<String, Object>> drwNoDateList = (List<HashMap<String, Object>>) statsService.selectSqlIdByHashMap("StatsDAO.selectDrwNoDateList", param);
 
 			if(statsVO.getDrwNoStart() == null) {
 				statsVO.setDrwNoStart("1");
 			}
 			if(statsVO.getDrwNoEnd() == null) {
-				statsVO.setDrwNoEnd(drwNoList.get(drwNoList.size()-1).get("drwNo").toString());
-			}
-			if(statsVO.getDrwNoDateStart() == null) {
-				statsVO.setDrwNoDateStart(drwNoDateList.get(0).get("drwNoStartMin").toString());
-			}
-			if(statsVO.getDrwNoDateEnd() == null) {
-				statsVO.setDrwNoDateEnd(drwNoDateList.get(0).get("drwNoStartMax").toString());
+				statsVO.setDrwNoEnd(drwNoList.get(0).get("drwNo").toString());
 			}
 			
 			model.addAttribute("result", result);
@@ -100,19 +86,12 @@ public class StatsController {
 		
 			List<HashMap<String, Object>> result = (List<HashMap<String, Object>>) statsService.selectSqlIdByStatsVO("StatsDAO.selectOddEvenStats", statsVO);
 			List<HashMap<String, Object>> drwNoList = (List<HashMap<String, Object>>) statsService.selectSqlIdByHashMap("StatsDAO.selectDrwNoList", param);
-			List<HashMap<String, Object>> drwNoDateList = (List<HashMap<String, Object>>) statsService.selectSqlIdByHashMap("StatsDAO.selectDrwNoDateList", param);
 
 			if(statsVO.getDrwNoStart() == null) {
 				statsVO.setDrwNoStart("1");
 			}
 			if(statsVO.getDrwNoEnd() == null) {
-				statsVO.setDrwNoEnd(drwNoList.get(drwNoList.size()-1).get("drwNo").toString());
-			}
-			if(statsVO.getDrwNoDateStart() == null) {
-				statsVO.setDrwNoDateStart(drwNoDateList.get(0).get("drwNoStartMin").toString());
-			}
-			if(statsVO.getDrwNoDateEnd() == null) {
-				statsVO.setDrwNoDateEnd(drwNoDateList.get(0).get("drwNoStartMax").toString());
+				statsVO.setDrwNoEnd(drwNoList.get(0).get("drwNo").toString());
 			}
 			
 			model.addAttribute("result", result);
@@ -137,21 +116,14 @@ public class StatsController {
 			
 			List<HashMap<String, Object>> result = (List<HashMap<String, Object>>) statsService.selectSqlIdByStatsVO("StatsDAO.selectSumNumberStats", statsVO);
 			List<HashMap<String, Object>> drwNoList = (List<HashMap<String, Object>>) statsService.selectSqlIdByHashMap("StatsDAO.selectDrwNoList", param);
-			List<HashMap<String, Object>> drwNoDateList = (List<HashMap<String, Object>>) statsService.selectSqlIdByHashMap("StatsDAO.selectDrwNoDateList", param);
 
 			if(statsVO.getDrwNoStart() == null) {
 				statsVO.setDrwNoStart("1");
 			}
 			if(statsVO.getDrwNoEnd() == null) {
-				statsVO.setDrwNoEnd(drwNoList.get(drwNoList.size()-1).get("drwNo").toString());
+				statsVO.setDrwNoEnd(drwNoList.get(0).get("drwNo").toString());
 			}
-			if(statsVO.getDrwNoDateStart() == null) {
-				statsVO.setDrwNoDateStart(drwNoDateList.get(0).get("drwNoStartMin").toString());
-			}
-			if(statsVO.getDrwNoDateEnd() == null) {
-				statsVO.setDrwNoDateEnd(drwNoDateList.get(0).get("drwNoStartMax").toString());
-			}
-			
+
 			if(result.size() > 0) {
 				
 				for(int i=0; i<result.size(); i++) {
@@ -171,6 +143,92 @@ public class StatsController {
 			
 		 
 		return "/stats/sumNumberStats";
+	}
+	
+	// 자동 수동 통계
+	@RequestMapping(value = "/stats/autoNumberStats.do")
+	public String goAutoNumberStatsPage(HttpServletRequest request,
+									@ModelAttribute("StatsVO") StatsVO statsVO,
+									ModelMap model)throws Exception{
+			
+			HashMap<String, Object> param = new HashMap<String, Object>();
+		
+			List<HashMap<String, Object>> result = (List<HashMap<String, Object>>) statsService.selectSqlIdByStatsVO("StatsDAO.selectAutoNumberStats", statsVO);
+			List<HashMap<String, Object>> drwNoList = (List<HashMap<String, Object>>) statsService.selectSqlIdByHashMap("StatsDAO.selectDrwNoList", param);
+
+			if(statsVO.getDrwNoStart() == null) {
+				statsVO.setDrwNoStart("1");
+			}
+			if(statsVO.getDrwNoEnd() == null) {
+				statsVO.setDrwNoEnd(drwNoList.get(0).get("drwNo").toString());
+			}
+			
+			model.addAttribute("result", result);
+			model.addAttribute("statsVO", statsVO);
+			model.addAttribute("drwNoList", drwNoList);
+			
+		 
+		return "/stats/autoNumberStats";
+	}
+	
+	// 지역별 통계
+	@RequestMapping(value = "/stats/areaStats.do")
+	public String goAreaStatsPage(HttpServletRequest request,
+									@ModelAttribute("StatsVO") StatsVO statsVO,
+									ModelMap model)throws Exception{
+			
+			HashMap<String, Object> param = new HashMap<String, Object>();
+		
+			List<HashMap<String, Object>> resultFirst = (List<HashMap<String, Object>>) statsService.selectSqlIdByStatsVO("StatsDAO.selectAreaStatsFirst", statsVO);
+			List<HashMap<String, Object>> resultSecond = (List<HashMap<String, Object>>) statsService.selectSqlIdByStatsVO("StatsDAO.selectAreaStatsSecond", statsVO);
+			
+			List<HashMap<String, Object>> drwNoList = (List<HashMap<String, Object>>) statsService.selectSqlIdByHashMap("StatsDAO.selectDrwNoList", param);
+
+			if(statsVO.getDrwNoStart() == null) {
+				statsVO.setDrwNoStart("1");
+			}
+			if(statsVO.getDrwNoEnd() == null) {
+				statsVO.setDrwNoEnd(drwNoList.get(0).get("drwNo").toString());
+			}
+			
+			model.addAttribute("resultFirst", resultFirst);
+			model.addAttribute("resultSecond", resultSecond);
+
+			model.addAttribute("statsVO", statsVO);
+			model.addAttribute("drwNoList", drwNoList);
+			
+		 
+		return "/stats/areaStats";
+	}
+	
+	// 판매점 통계
+	@RequestMapping(value = "/stats/storeStats.do")
+	public String goStoreStatsPage(HttpServletRequest request,
+									@ModelAttribute("StatsVO") StatsVO statsVO,
+									ModelMap model)throws Exception{
+			
+			HashMap<String, Object> param = new HashMap<String, Object>();
+		
+			List<HashMap<String, Object>> resultFirst = (List<HashMap<String, Object>>) statsService.selectSqlIdByStatsVO("StatsDAO.selectStoreStatsFirst", statsVO);
+			List<HashMap<String, Object>> resultSecond = (List<HashMap<String, Object>>) statsService.selectSqlIdByStatsVO("StatsDAO.selectStoreStatsSecond", statsVO);
+			
+			List<HashMap<String, Object>> drwNoList = (List<HashMap<String, Object>>) statsService.selectSqlIdByHashMap("StatsDAO.selectDrwNoList", param);
+
+			if(statsVO.getDrwNoStart() == null) {
+				statsVO.setDrwNoStart("1");
+			}
+			if(statsVO.getDrwNoEnd() == null) {
+				statsVO.setDrwNoEnd(drwNoList.get(0).get("drwNo").toString());
+			}
+			
+			model.addAttribute("resultFirst", resultFirst);
+			model.addAttribute("resultSecond", resultSecond);
+
+			model.addAttribute("statsVO", statsVO);
+			model.addAttribute("drwNoList", drwNoList);
+			
+		 
+		return "/stats/storeStats";
 	}
 	
 }

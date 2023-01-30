@@ -116,4 +116,27 @@
 				lotto_data_m)
 	</insert>
 	
+	
+	<!-- 로또 당첨 판매점 저장하기 -->
+	<insert id="ApiDAO.insertStore" parameterType="hashMap">
+		INSERT INTO lotto_store_m 
+			( 
+				drwNo 		    ,	
+				grade    	 	,	
+				seq     		,	
+				storeNm 	    ,	
+				gb    			,	
+				address  		
+ 			) 
+		VALUES 
+			( 
+				#{drwNo} 		,
+				#{grade} 		,
+				#{seq} 			,
+				#{storeNm} 		,	
+				#{gb} 			,	
+				#{address} 	
+			)
+	</insert>
+	
 </mapper>
