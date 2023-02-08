@@ -1,8 +1,9 @@
 # [프로젝트] 오늘의 로또
 
-사용기술 : Spring, Java, JavaScript, css, html, mysql, mybatis, selenium, kakaoMapAPI
+사용기술 : Spring, Java, JavaScript, css, html5, mysql, mybatis, selenium, kakaoap
 
-로또 통계 및 추천번호 생성 웹 서비스
+웹 로또 서비스
+
 * 매주 토요일 21시 스케줄러로 API 호출하여 로또 번호 저장 및 통계 생성
 * 매주 토요일 21시 스케줄러로 selenium 활용하여 로또 당첨 판매점 정보 저장
 * 메인 화면에서는 이번주 회차당첨번호 표출 및 당첨 판매점을 카카오 맵을 통하여 표출
