@@ -1,6 +1,6 @@
 # [프로젝트] 오늘의 로또
 
-사용기술 : Spring, Java, JavaScript, css, html5, mysql, mybatis, selenium, kakaoap
+사용기술 : Spring, Java, JavaScript, css, html5, mysql, mybatis, selenium, kakaomap
 
 웹 로또 서비스
 
