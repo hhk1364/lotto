@@ -1,6 +1,8 @@
 # [프로젝트] 오늘의 로또
 
-사용기술 : Spring, Java, JavaScript, css, html5, mysql, mybatis, selenium, kakaomap
+http://146.56.153.118:8080/
+
+사용기술 : Spring, Java, JavaScript, css, html5, mysql, mybatis, selenium, kakaomap, oracle-cloud
 
 웹 로또 서비스
 
